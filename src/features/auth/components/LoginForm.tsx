@@ -35,15 +35,10 @@ export default function LoginForm() {
     }
   };
   const handleGoogleSignIn = async () => {
-    const redirectTo =
-      typeof window !== "undefined"
-        ? `${window.location.origin}/auth/callback`
-        : undefined;
-  
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo,
+        redirectTo: "https://sign-up-frontend-zk8x.vercel.app/auth/callback",
       },
     });
   };
