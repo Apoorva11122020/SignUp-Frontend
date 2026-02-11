@@ -35,10 +35,15 @@ export default function LoginForm() {
     }
   };
   const handleGoogleSignIn = async () => {
+    const redirectTo =
+      typeof window !== "undefined"
+        ? `${window.location.origin}/auth/callback`
+        : undefined;
+  
     await supabase.auth.signInWithOAuth({
-      provider: 'google',
+      provider: "google",
       options: {
-        redirectTo: 'http://localhost:3000/auth/callback',
+        redirectTo,
       },
     });
   };
